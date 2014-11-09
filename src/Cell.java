@@ -21,23 +21,19 @@ public class Cell {
 		System.out.print("|");
 	}
 	public void printValue() {
-		if(value == null) {
-			System.out.print("            ");
-			return;
+		String v = value;
+		if(v == null) {
+			v = "";
 		}
-		if(value.length() < 11) {
-			int numOfSpaces = (12 - value.length()) / 2;
-			leadSpace(numOfSpaces);	
-			System.out.print(value);		
-			if(value.length() % 2 == 1) {
-				leadSpace(numOfSpaces + 1);
-			} else {
-				leadSpace(numOfSpaces);
-			}				
-		} else if(value.length() == 11) {
-			System.out.print(value + " ");
+		if(v.length() < 12) {
+			int numOfSpacesRight = (12 - v.length()) / 2;
+			int numOfSpacesLeft = 12 - v.length() - numOfSpacesRight;
+			leadSpace(numOfSpacesLeft);
+			System.out.print(v);		
+			leadSpace(numOfSpacesRight);
+							
 		} else {
-			System.out.print(value.substring(0, 11) + ">");
+			System.out.print(v.substring(0, 11) + ">");
 		}
 	}
 	

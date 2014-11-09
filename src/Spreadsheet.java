@@ -32,8 +32,8 @@ public class Spreadsheet {
 	
 	public int[] findLocation(String location) {
 		int[] coords = new int[2]; 
-		coords[0] = location.charAt(0) - 'A' + 1;
-		coords[1] = Integer.parseInt(location.substring(1));
+		coords[0] = Integer.parseInt(location.substring(1));
+		coords[1] = location.charAt(0) - 'A' + 1;
 		return coords;
 	}
 	
