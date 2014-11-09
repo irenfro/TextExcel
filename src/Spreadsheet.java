@@ -2,7 +2,7 @@
 public class Spreadsheet {
 	final static int height = 10;
 	final static int width = 7;
-	Cell[][] data = new Cell[height][width];
+	Cell[][] data = new Cell[height + 1][width + 1];
 	final static String line = "------------+";
 
 	public Spreadsheet() {
@@ -11,12 +11,18 @@ public class Spreadsheet {
 				data[i][j] = new Cell();
 			}
 		}
+		
+		for(int i = 1; i < data[0].length; i++) {
+			data[0][i].setValue(Character.toString((char) (i - 1 + 'A')));
+		}
+		
+		for(int i = 1; i < data.length; i++) {
+			data[i][0].setValue(Integer.toString(i));
+		}
 	}
 	
 	public void print() {
-		printHeaderRow();
 		for(int i = 0; i < data.length; i++) {
-			printRowLable(i + 1);
 			for(int j = 0; j < data[i].length; j++) {
 				data[i][j].print();
 			}
@@ -25,25 +31,9 @@ public class Spreadsheet {
 		}
 	}
 	
-	public void printHeaderRow() {
-		Cell c = new Cell();
-		c.print();
-		for(int i = 0; i < data[0].length; i++) {
-			c.setValue(Character.toString((char)(i + 'A')));
-			c.print();
-		}
-		System.out.println();
-		line();
-	}
-	
-	public static void printRowLable(int i) {
-		Cell c = new Cell();
-		c.setValue(Integer.toString(i));
-		c.print();
-	}
 	
 	public void line() {
-		for(int i = 0; i <= data[0].length; i++) {
+		for(int i = 0; i < data[0].length; i++) {
 			System.out.print(line);
 		}
 		System.out.println();
