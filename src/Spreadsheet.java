@@ -32,7 +32,6 @@ public class Spreadsheet {
 	public void setValue(String location, String value) {
 		int[] coords = findLocation(location);
 		data[coords[0]][coords[1]].setValue(value);
-		System.out.println(value);
 	}
 	
 	public int[] findLocation(String location) {
@@ -40,6 +39,16 @@ public class Spreadsheet {
 		coords[0] = Integer.parseInt(location.substring(1));
 		coords[1] = location.charAt(0) - 'A' + 1;
 		return coords;
+	}
+	
+	public void printValue(String location) {
+		int[] coords = findLocation(location);
+		if(data[coords[0]][coords[1]] == null) {
+			System.out.println(location + " = <empty>");
+		} else {
+			System.out.print(location + " = ");
+			data[coords[0]][coords[1]].print("");
+		}
 	}
 	
 	public void print() {

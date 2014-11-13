@@ -42,6 +42,9 @@ public class Program {
 					s.print();
 					return;
 				}
+				if(parts[0].matches("^[A-Z]+[0-9]+$")) {
+					s.printValue(parts[0]);
+				}
 		}
 	}
 }

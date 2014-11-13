@@ -47,4 +47,12 @@ public class Cell {
 			System.out.print(" ");
 		}
 	}
+	
+	public void print(String s) {
+		if(value == null) {
+			System.out.println("<empty>");
+		} else {
+			printValue();
+		}
+	}
 }
