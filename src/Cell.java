@@ -25,10 +25,15 @@ public class Cell {
 		if(v == null) {
 			v = "";
 		}
+		if(v.matches("^-?([0-9]+.?[0-9]*|[0-9]*.[0-9]+)$ (?!\\s)")) {
+			v = Double.toString(Double.parseDouble(value));
+		}
+
 		if(v.length() < 12) {
 			int numOfSpacesRight = (12 - v.length()) / 2;
 			int numOfSpacesLeft = 12 - v.length() - numOfSpacesRight;
 			leadSpace(numOfSpacesLeft);
+			
 			System.out.print(v);		
 			leadSpace(numOfSpacesRight);
 							

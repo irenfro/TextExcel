@@ -17,17 +17,22 @@ public class Spreadsheet {
 		}
 		
 		for(int i = 1; i < data.length; i++) {
-			data[i][0].setValue(Integer.toString(i));
+			data[i][0].setValue(Integer.toString(i) + " ");
 		}
 	}
 	
 	public void setValue(String location, int num) {
-		setValue(location, Double.toString((double) num));
+		setValue(location, Integer.toString(num));
+	}
+	
+	public void setValue(String location, double num) {
+		setValue(location, Double.toString(num));
 	}
 	
 	public void setValue(String location, String value) {
 		int[] coords = findLocation(location);
 		data[coords[0]][coords[1]].setValue(value);
+		System.out.println(value);
 	}
 	
 	public int[] findLocation(String location) {

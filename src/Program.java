@@ -22,14 +22,26 @@ public class Program {
 	
 	public static void evaluate(String input) {
 		String[] parts = input.split(" ");
-		if(parts.length == 3 && parts[1].equals("=")) {
-			s.setValue(parts[0], parts[2]);
-			return;
+		if(parts.length == 3 ){
+				if(parts[1].equals("=")) {
+					if(parts[2].matches("^-?([0-9]+.?[0-9]*|[0-9]*.[0-9]+)$")) {
+						s.setValue(parts[0], Double.parseDouble(parts[2]));
+						return;
+					}	else if(parts[2].matches("^-?[0-9]")){
+						s.setValue(parts[0], Integer.parseInt(parts[2]));
+						return;
+					}	else {
+						s.setValue(parts[0], parts[2]);
+						return;
+					}
+				}
 		}
-		if(parts.length == 1 && parts[0].toLowerCase().equals("print")) {
-			System.out.println();
-			s.print();
-			return;
+		if(parts.length == 1) {
+				if(parts[0].toLowerCase().equals("print")) {
+					System.out.println();
+					s.print();
+					return;
+				}
 		}
 	}
 }
