@@ -51,6 +51,14 @@ public class Spreadsheet {
 		}
 	}
 	
+	public void clear() {
+		for(int i = 1; i < data.length; i++) {
+			for(int j = 1; j < data[0].length; j++) {
+				data[i][j].setValue(null);
+			}
+		}
+	}
+	
 	public void print() {
 		for(int i = 0; i < data.length; i++) {
 			for(int j = 0; j < data[i].length; j++) {

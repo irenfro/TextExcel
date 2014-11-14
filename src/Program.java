@@ -41,9 +41,10 @@ public class Program {
 					System.out.println();
 					s.print();
 					return;
-				}
-				if(parts[0].matches("^[A-Z]+[0-9]+$")) {
+				} else if(parts[0].matches("^[A-Z]+[0-9]+$")) {
 					s.printValue(parts[0]);
+				} else if(parts[0].toLowerCase().equals("clear")) {
+					s.clear();
 				}
 		}
 	}
