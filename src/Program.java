@@ -35,8 +35,12 @@ public class Program {
 						return;
 					}
 				}
-		}
-		if(parts.length == 1) {
+				
+		} else if(parts.length == 2) {
+			if(parts[0].equals("clear") && parts[1].matches("^[A-Z]+[0-9]+$")) {
+				s.clear(parts[1]);
+			}
+		} else if(parts.length == 1) {
 				if(parts[0].toLowerCase().equals("print")) {
 					System.out.println();
 					s.print();

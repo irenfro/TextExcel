@@ -59,6 +59,11 @@ public class Spreadsheet {
 		}
 	}
 	
+	public void clear(String location) {
+		int[] coords = findLocation(location);
+		data[coords[0]][coords[1]].setValue(null);
+	}
+	
 	public void print() {
 		for(int i = 0; i < data.length; i++) {
 			for(int j = 0; j < data[i].length; j++) {
