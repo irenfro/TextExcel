@@ -30,10 +30,14 @@ public class Cell {
 		}
 
 		if(v.length() < 12) {
+			if(v.length() > 2) {
+				if(v.charAt(0) == '"' && v.charAt(v.length() - 1) == '"') {
+					v = v.substring(1, v.length() - 1);
+				}
+			}
 			int numOfSpacesRight = (12 - v.length()) / 2;
 			int numOfSpacesLeft = 12 - v.length() - numOfSpacesRight;
 			leadSpace(numOfSpacesLeft);
-			
 			System.out.print(v);		
 			leadSpace(numOfSpacesRight);
 							
@@ -52,7 +56,12 @@ public class Cell {
 		if(value == null) {
 			System.out.println("<empty>");
 		} else {
-			printValue();
+			printValue(s);
 		}
+	}
+
+	public void printValue(String s) {
+		System.out.println(value);
+		
 	}
 }
