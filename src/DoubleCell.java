@@ -16,12 +16,7 @@ public class DoubleCell extends Cell{
 	}
 	
 	public String getDisplayableSpreadsheetValue() {
-		String stringValue = Double.toString(value);
-		if(stringValue.length() > 12) {
-			return stringValue.substring(0, 11) + ">";
-		} else {
-			return stringValue;
-		}
+		return Double.toString(value);
 	}
 	
 	public String getDisplayableSingleValue() {

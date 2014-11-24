@@ -10,17 +10,14 @@ public class Cell {
 
 	public void printValue() {
 		String v = this.getDisplayableSpreadsheetValue();
-		if (v == null) {
-			v = "";
+		if (v.length() > 12) {
+			v = v.substring(0, 11) + ">";
 		}
-		if (v.length() <= 12) {
-			int numOfSpacesRight = (12 - v.length()) / 2;
-			int numOfSpacesLeft = 12 - v.length() - numOfSpacesRight;
-			leadSpace(numOfSpacesLeft);
-			System.out.print(v);
-			leadSpace(numOfSpacesRight);
-
-		} 
+		int numOfSpacesRight = (12 - v.length()) / 2;
+		int numOfSpacesLeft = 12 - v.length() - numOfSpacesRight;
+		leadSpace(numOfSpacesLeft);
+		System.out.print(v);
+		leadSpace(numOfSpacesRight);
 	}
 
 	public static void leadSpace(int x) {
