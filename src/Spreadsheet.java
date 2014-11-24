@@ -38,7 +38,7 @@ public class Spreadsheet {
 	public void printValue(String location) {
 		int[] coords = findLocation(location);
 		System.out.print(location + " = ");
-		data[coords[0]][coords[1]].printUnpaddedCell();
+		CellPrinter.printUnpaddedCell(data[coords[0]][coords[1]]);
 	}
 
 /*	public void clear() {
@@ -57,7 +57,7 @@ public class Spreadsheet {
 	public void print() {
 		for (int i = 0; i < data.length; i++) {
 			for (int j = 0; j < data[i].length; j++) {
-				data[i][j].printPaddedCell();
+				CellPrinter.printPaddedCell(data[i][j]);
 			}
 			System.out.println();
 			line();
