@@ -15,7 +15,7 @@ public class StringCell extends Cell{
 		return value;
 	}
 	
-	public String getDispValue() {
+	public String getDisplayableSpreadsheetValue() {
 		String temp = value;
 		if(temp.length() > 2 && temp.charAt(0) == '"' && temp.charAt(temp.length() -1) == '"') {
 			temp = temp.substring(1, temp.length() - 1);
@@ -26,6 +26,10 @@ public class StringCell extends Cell{
 			return temp;
 		}
 		
+	}
+	
+	public String getDisplayableSingleValue() {
+		return value;
 	}
 	
 	public static StringCell parseCell(String input) {

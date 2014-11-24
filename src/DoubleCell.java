@@ -15,13 +15,21 @@ public class DoubleCell extends Cell{
 		return value;
 	}
 	
-	public String getDispValue() {
-		String temp = Double.toString(value);
-		if(temp.length() > 12) {
-			return temp.substring(0, 11) + ">";
+	public String getDisplayableSpreadsheetValue() {
+		String stringValue = Double.toString(value);
+		if(stringValue.length() > 12) {
+			return stringValue.substring(0, 11) + ">";
 		} else {
-			return temp;
+			return stringValue;
 		}
+	}
+	
+	public String getDisplayableSingleValue() {
+		long wholeNumber = (int) value;
+		if(wholeNumber == value) {
+			return Long.toString(wholeNumber);
+		}
+		return Double.toString(value);
 	}
 	
 	public static DoubleCell parseCell(String input) {

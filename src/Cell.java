@@ -9,7 +9,7 @@ public class Cell {
 	}
 
 	public void printValue() {
-		String v = this.getDispValue();
+		String v = this.getDisplayableSpreadsheetValue();
 		if (v == null) {
 			v = "";
 		}
@@ -30,7 +30,7 @@ public class Cell {
 	}
 
 	public void printUnpaddedCell() {
-		String value = this.getDispValue();
+		String value = this.getDisplayableSingleValue();
 		if (value.equals(null) || value.equals("")) {
 			System.out.println("<empty>");
 		} else {
@@ -38,7 +38,7 @@ public class Cell {
 		}
 	}
 	
-	public String getDispValue() {
+	public String getDisplayableSpreadsheetValue() {
 		return "";
 	}
 	
@@ -52,6 +52,10 @@ public class Cell {
 			return cell;
 		}
 		throw new InvalidCellValueException();
+	}
+	
+	public String getDisplayableSingleValue() {
+		return "";
 	}
 	
 	
