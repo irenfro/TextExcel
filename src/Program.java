@@ -34,7 +34,7 @@ public class Program {
 			if (parts.get(0).equals("clear") && parts.get(1).matches("^[A-Z]+[0-9]+$")) {
 				s.clear(parts.get(1));
 			}
-	*/} else if (Parts.length == 1) {
+	*/	} else if (Parts.length == 1) {
 			if (Parts[0].toLowerCase().equals("print")) {
 				System.out.println();
 				s.print();
@@ -44,7 +44,9 @@ public class Program {
 			}/* else if (parts.get(0).toLowerCase().equals("clear")) {
 				s.clear();
 			}*/
-		}
+	 	} else {
+	 		System.out.println(input + ": is not a vaild command");
+	 	}
 	}
 	
 	public static boolean stringCheck(String value) {
