@@ -4,7 +4,7 @@ public class Program {
 
 	static Spreadsheet s = new Spreadsheet();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidCellValueException {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome to TextExcel!");
 		while (true) {
@@ -19,7 +19,7 @@ public class Program {
 		sc.close();
 	}
 
-	public static void evaluate(String input) {
+	public static void evaluate(String input) throws InvalidCellValueException {
 		String[] Parts = input.split(" ", 3);
 		if (Parts.length == 3) {
 			if (Parts[1].equals("=")) {
@@ -30,20 +30,20 @@ public class Program {
 				}
 			}
 
-	/*	} else if (parts.size() == 2) {
-			if (parts.get(0).equals("clear") && parts.get(1).matches("^[A-Z]+[0-9]+$")) {
-				s.clear(parts.get(1));
+		} else if (Parts.length == 2) {
+			if (Parts[0].equals("clear") && Parts[1].matches("^[A-Z]+[0-9]+$")) {
+				s.clear(Parts[1]);
 			}
-	*/	} else if (Parts.length == 1) {
+		} else if (Parts.length == 1) {
 			if (Parts[0].toLowerCase().equals("print")) {
 				System.out.println();
 				s.print();
 				return;
 			} else if (Parts[0].matches("^[A-Z]+[0-9]+$")) {
 				s.printValue(Parts[0]);
-			}/* else if (parts.get(0).toLowerCase().equals("clear")) {
+			}else if (Parts[0].toLowerCase().equals("clear")) {
 				s.clear();
-			}*/
+			}
 	 	} else {
 	 		System.out.println(input + ": is not a vaild command");
 	 	}

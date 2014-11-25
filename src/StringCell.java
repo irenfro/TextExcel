@@ -23,6 +23,9 @@ public class StringCell extends Cell{
 	}
 	
 	public static StringCell parseCell(String input) {
+		if(input == null) {
+			return new StringCell("");
+		}
 		if(input.length() < 2 || 
 		   input.charAt(0) != '"' || 
 		   input.charAt(input.length() - 1) != '"'){

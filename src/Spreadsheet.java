@@ -38,18 +38,18 @@ public class Spreadsheet {
 		CellPrinter.printUnpaddedCell(data[coords[0]][coords[1]]);
 	}
 
-/*	public void clear() {
+	public void clear() throws InvalidCellValueException {
 		for (int i = 1; i < data.length; i++) {
 			for (int j = 1; j < data[0].length; j++) {
-				data[i][j].setValue(null);
+				data[i][j] = CellParser.parseCell(null);
 			}
 		}
 	}
 
-	public void clear(String location) {
+	public void clear(String location) throws InvalidCellValueException {
 		int[] coords = findLocation(location);
-		data[coords[0]][coords[1]].setValue(null);
-	}*/ 
+		data[coords[0]][coords[1]] = CellParser.parseCell(null);
+	} 
 
 	public void print() {
 		for (int i = 0; i < data.length; i++) {
