@@ -28,9 +28,6 @@ public class Program {
 				} catch (InvalidCellValueException e) {
 					System.out.println("Invalid Cell Value. String Cell should be enclosed in \"\".");				
 				}
-				if(!stringCheck(Parts[2])) {
-					System.out.println("Invalid Cell Value. String Cell should be enclosed in \"\".");
-				}
 			}
 
 	/*	} else if (parts.size() == 2) {

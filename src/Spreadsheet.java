@@ -22,10 +22,7 @@ public class Spreadsheet {
 
 	public void setValue(String location, String value) throws InvalidCellValueException {
 		int[] coords = findLocation(location);
-		data[coords[0]][coords[1]] = Cell.parseCell(value);
-		if (data[coords[0]][coords[1]] == null) {
-			System.out.println("set a null cell");
-		}
+		data[coords[0]][coords[1]] = CellParser.parseCell(value);
 	}
 
 	public int[] findLocation(String location) {

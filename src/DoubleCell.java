@@ -1,4 +1,3 @@
-
 public class DoubleCell extends Cell{
 
 	double value;

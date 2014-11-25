@@ -1,4 +1,3 @@
-
 public class StringCell extends Cell{
 	
 	String value;
