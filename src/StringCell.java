@@ -19,7 +19,7 @@ public class StringCell extends Cell{
 	}
 	
 	public String getDisplayableSingleValue() {
-		return "\"" + value + "\"";
+		return "\"" + value + "\"\n[String]";
 	}
 	
 	public static StringCell parseCell(String input) {

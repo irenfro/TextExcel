@@ -48,15 +48,4 @@ public class Program {
 	 		System.out.println(input + ": is not a vaild command");
 	 	}
 	}
-	
-	public static boolean stringCheck(String value) {
-		if(value.matches("^-?([0-9]+.?[0-9]*|[0-9]*.[0-9]+)$")) {
-			return true;
-		}
-		if(value.charAt(0) == '"' && value.charAt(value.length() - 1) == '"') {
-			return true;
-		} else {
-			return false;
-		}
-	}
 }
