@@ -21,9 +21,13 @@ public class DoubleCell extends Cell{
 	public String getDisplayableSingleValue() {
 		long wholeNumber = (int) value;
 		if(wholeNumber == value) {
-			return Long.toString(wholeNumber) + "\n[Number]";
+			return Long.toString(wholeNumber) + getType();
 		}
-		return Double.toString(value) + "\n[Number]";
+		return Double.toString(value) + getType();
+	}
+	
+	public static String getType() {
+		return "\n[Number]";
 	}
 	
 	public static DoubleCell parseCell(String input) {

@@ -7,13 +7,12 @@ public class Program {
 	public static void main(String[] args) throws InvalidCellValueException {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome to TextExcel!");
-		while (true) {
-			System.out.print("\nEnter a command: ");
-			String input = sc.nextLine();
-			if (input.toLowerCase().equals("exit")) {
-				break;
-			}
+		System.out.print("\nEnter a command: ");
+		String input = sc.nextLine();
+		while (!input.toLowerCase().equals("exit")) {
 			evaluate(input);
+			System.out.print("\nEnter a command: ");
+			input = sc.nextLine();
 		}
 		System.out.println("\nFarewell!");
 		sc.close();

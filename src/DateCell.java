@@ -33,7 +33,11 @@ public class DateCell extends Cell{
 	}
 	
 	public String getDisplayableSingleValue() {
-		return value + "\n[Date]";
+		return value + getType();
+	}
+	
+	public static String getType() {
+		return "\n[Date]";
 	}
 	
 	public static DateCell parseCell(String input) {
