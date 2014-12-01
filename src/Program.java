@@ -26,7 +26,10 @@ public class Program {
 				try {
 					s.setValue(Parts[0], Parts[2]);
 				} catch (InvalidCellValueException e) {
-					System.out.println("Invalid Cell Value. String Cell should be enclosed in \"\".");				
+					System.out.println("Invalid Cell Value. "
+							+ "\nA String should be enclosed in \"\"."
+							+ "\nA Date should be a valid date within the 12 months and a date between 1 and 31."
+							+ "\nA Double or Number should just be any number");				
 				}
 			}
 

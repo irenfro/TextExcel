@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class CellParserTest {
+public class CellMatrixTest {
 
 	@Test
 	public void isDoubleTest() {
@@ -37,9 +37,23 @@ public class CellParserTest {
 		assertEquals(false, CellParser.isString("3.0"));
 		assertEquals(false, CellParser.isString("3"));
 		assertEquals(false, CellParser.isString("3/20/1990"));
-
-
-
-
+	}
+	
+	@Test
+	public void SpreadsheetTest()  {
+		Spreadsheet s = new Spreadsheet();
+		try {
+			s.setValue("A5", "1.3");
+			s.setValue("B3", "\"hello\"");
+			s.setValue("C6", "9/16/1979");
+		} catch (InvalidCellValueException e) {
+			e.printStackTrace();
+		}
+		Cell c = s.getCell("A5");
+		assertEquals("1.3\n[Number]", c.getDisplayableSingleValue());
+		c = s.getCell("B3");
+		assertEquals("\"hello\"\n[String]", c.getDisplayableSingleValue());
+		c = s.getCell("C6");
+		assertEquals("9/16/1979\n[Date]", c.getDisplayableSingleValue());
 	}
 }

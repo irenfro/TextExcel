@@ -22,6 +22,10 @@ public class Spreadsheet {
 
 	public void setValue(String location, String value) throws InvalidCellValueException {
 		int[] coords = findLocation(location);
+		if(coords[0] > 10 || coords[1] > 7) {
+			System.out.println("Error: The cell that you requested is not within the vaild cells.  \nValid cells are A-G x 1-10");
+			return;
+		}
 		data[coords[0]][coords[1]] = CellParser.parseCell(value);
 	}
 
@@ -36,6 +40,11 @@ public class Spreadsheet {
 		int[] coords = findLocation(location);
 		System.out.print(location + " = ");
 		CellPrinter.printUnpaddedCell(data[coords[0]][coords[1]]);
+	}
+	
+	public Cell getCell(String location) {
+		int[] coords = findLocation(location);
+		return data[coords[0]][coords[1]];
 	}
 
 	public void clear() throws InvalidCellValueException {
