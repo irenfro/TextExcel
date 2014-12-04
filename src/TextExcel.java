@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class Program {
+public class TextExcel {
 
-	static Spreadsheet s = new Spreadsheet();
+	static CellMatrix s = new CellMatrix();
 
-	public static void main(String[] args) throws InvalidCellValueException {
+	public static void main(String[] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome to TextExcel!");
 		System.out.print("\nEnter a command: ");
@@ -18,7 +18,7 @@ public class Program {
 		sc.close();
 	}
 
-	public static void evaluate(String input) throws InvalidCellValueException {
+	public static void evaluate(String input) throws Exception {
 		String[] Parts = input.split(" ", 3);
 		if (Parts.length == 3) {
 			if (Parts[1].equals("=")) {
@@ -35,6 +35,12 @@ public class Program {
 		} else if (Parts.length == 2) {
 			if (Parts[0].equals("clear") && Parts[1].matches("^[A-Z]+[0-9]+$")) {
 				s.clear(Parts[1]);
+			}
+			if (Parts[0].equals("save")) {
+				PersistenceHelper.save(Parts[1], s);
+			}
+			if (Parts[0].equals("load")) {
+				PersistenceHelper.load(Parts[1], s);
 			}
 		} else if (Parts.length == 1) {
 			if (Parts[0].toLowerCase().equals("print")) {

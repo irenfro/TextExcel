@@ -33,15 +33,18 @@ public class DateCell extends Cell{
 	}
 	
 	public String getDisplayableSingleValue() {
-		return value + getType();
+		return value;
 	}
 	
-	public static String getType() {
+	public String getType() {
 		return "\n[Date]";
 	}
 	
 	public static DateCell parseCell(String input) {
 		String pattern = "(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])/((19|20)\\d\\d)";
+		if(input == null) {
+			return null;
+		}
 		if(!input.matches(pattern)) {
 			return null;
 		} 

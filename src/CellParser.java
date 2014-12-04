@@ -13,6 +13,8 @@ public class CellParser {
 		cell = StringCell.parseCell(input);
 		if (cell != null) {
 			return cell;
+		} else if(cell == null){
+			return new StringCell("");
 		}
 		throw new InvalidCellValueException();
 	}

@@ -41,13 +41,14 @@ public class CellMatrixTest {
 	
 	@Test
 	public void SpreadsheetTest()  {
-		Spreadsheet s = new Spreadsheet();
+		CellMatrix s = new CellMatrix();
 		try {
 			s.setValue("A5", "1.3");
 			s.setValue("B3", "\"hello\"");
 			s.setValue("C6", "9/16/1979");
+			s.setValue("G10", "1234");
+			s.setValue("Z22", "1234");
 		} catch (InvalidCellValueException e) {
-			e.printStackTrace();
 		}
 		Cell c = s.getCell("A5");
 		assertEquals("1.3\n[Number]", c.getDisplayableSingleValue());
@@ -55,5 +56,7 @@ public class CellMatrixTest {
 		assertEquals("\"hello\"\n[String]", c.getDisplayableSingleValue());
 		c = s.getCell("C6");
 		assertEquals("9/16/1979\n[Date]", c.getDisplayableSingleValue());
+		c = s.getCell("G10");
+		assertEquals("1234\n[Number]", c.getDisplayableSingleValue());
 	}
 }

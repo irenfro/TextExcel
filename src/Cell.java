@@ -10,6 +10,9 @@ public class Cell {
 	public String getDisplayableSingleValue() {
 		return "";
 	}
-	
+
+	public String getType() {
+		return "";
+	}
 	
 }

@@ -21,12 +21,12 @@ public class DoubleCell extends Cell{
 	public String getDisplayableSingleValue() {
 		long wholeNumber = (int) value;
 		if(wholeNumber == value) {
-			return Long.toString(wholeNumber) + getType();
+			return Long.toString(wholeNumber);
 		}
-		return Double.toString(value) + getType();
+		return Double.toString(value);
 	}
 	
-	public static String getType() {
+	public String getType() {
 		return "\n[Number]";
 	}
 	

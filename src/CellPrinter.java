@@ -7,6 +7,7 @@ public class CellPrinter {
 			System.out.println("<empty>");
 		} else {
 			System.out.println(value);
+			System.out.println(c.getType());
 		}
 	}
 

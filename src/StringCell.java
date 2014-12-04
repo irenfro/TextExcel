@@ -19,10 +19,10 @@ public class StringCell extends Cell{
 	}
 	
 	public String getDisplayableSingleValue() {
-		return "\"" + value + "\"" + getType();
+		return "\"" + value + "\"";
 	}
 	
-	public static String getType() {
+	public String getType() {
 		return "\n[String]";
 	}
 	
