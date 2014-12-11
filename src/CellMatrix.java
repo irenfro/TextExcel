@@ -24,13 +24,13 @@ public class CellMatrix {
 		int[] coords = findLocation(location);
 		if(coords[0] > 10 || coords[1] > 7) {
 			System.out.println("Error: The cell that you requested is not within the vaild cells.  \nValid cells are A-G x 1-10");
-			return;
+			return; 
 		}
 		data[coords[0]][coords[1]] = CellParser.parseCell(value);
 	}
 	
 	public void setValue(int row, String rowValue) throws InvalidCellValueException {
-		String[] singleValues = rowValue.split(";");
+		String[] singleValues = rowValue.split("Ω");
 		for(int i = 0; i < singleValues.length; i++) {
 			data[row][i] = CellParser.parseCell(singleValues[i]);
 		}
@@ -90,9 +90,9 @@ public class CellMatrix {
 		for(int i = 0; i < this.height+1; i++) {
 			String row = "";
 			for(int j = 0; j < this.width+1; j++) {
-				String temp = data[i][j].getDisplayableSingleValue() + ";";
-				if(temp.equals(";")){
-					temp = "\"\";";
+				String temp = data[i][j].getDisplayableSingleValue() + "Ω";
+				if(temp.equals("Ω")){
+					temp = "\"\"Ω";
 				}
 				row += temp;
 			}

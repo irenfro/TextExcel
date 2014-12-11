@@ -41,6 +41,7 @@ public class TextExcel {
 			}
 			if (Parts[0].equals("load")) {
 				PersistenceHelper.load(Parts[1], s);
+				//Thread.sleep(2);
 			}
 		} else if (Parts.length == 1) {
 			if (Parts[0].toLowerCase().equals("print")) {

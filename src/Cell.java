@@ -1,5 +1,6 @@
 public class Cell {
-
+	String value;
+	
 	public Cell() {
 	}
 	

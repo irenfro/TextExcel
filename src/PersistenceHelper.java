@@ -27,7 +27,8 @@ public class PersistenceHelper {
 
 		File f = new File(filePath);
 		if( !f.exists() ){
-			System.err.println( "File not exist : " + f.getAbsolutePath() + "\n");
+			System.err.print("Unable to load from path '" + filePath + "'. ");
+			System.err.println( "ERROR: " + filePath + " (The system cannot find the specified file)");
 			return;
 		}
 		
