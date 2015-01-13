@@ -37,7 +37,7 @@ public class DateCell extends Cell{
 	}
 	
 	public String getType() {
-		return "\n[Date]";
+		return "[Date]";
 	}
 	
 	public static DateCell parseCell(String input) {

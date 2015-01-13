@@ -27,7 +27,7 @@ public class DoubleCell extends Cell{
 	}
 	
 	public String getType() {
-		return "\n[Number]";
+		return "[Number]";
 	}
 	
 	public static DoubleCell parseCell(String input) {

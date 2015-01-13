@@ -23,7 +23,7 @@ public class StringCell extends Cell{
 	}
 	
 	public String getType() {
-		return "\n[String]";
+		return "[String]";
 	}
 	
 	public static StringCell parseCell(String input) {

@@ -1,3 +1,6 @@
+
+
+
 public class CellMatrix {
 	final static int height = 10;
 	final static int width = 7;
@@ -52,7 +55,12 @@ public class CellMatrix {
 	public void print() {
 		for (int i = 0; i < data.length; i++) {
 			for (int j = 0; j < data[i].length; j++) {
-				CellPrinter.printPaddedCell(data[i][j]);
+				try {
+					CellPrinter.printPaddedCell(data[i][j]);
+				} catch (InvalidInputException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			System.out.println();
 			line();
@@ -108,5 +116,6 @@ public class CellMatrix {
 		}
 	}
 
+	
 
 }
