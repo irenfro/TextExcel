@@ -1,6 +1,7 @@
 
 
 
+
 public class CellMatrix {
 	final static int height = 10;
 	final static int width = 7;

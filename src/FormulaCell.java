@@ -19,6 +19,20 @@ public class FormulaCell extends Cell {
 		return "[Formula]";
 	}
 	
+	public String getDisplayableSingleValue() {
+		return value;
+	}
 	
+	public String getDisplayableSpreadsheetValue() {
+		return value;
+	}
+	
+	public static FormulaCell parseCell(String input) {
+		if(input.charAt(0) == '(' && input.charAt(input.length() - 1) == ')') {
+			return new FormulaCell(input);
+		} else {
+			return null;
+		}
+	}
 
 }

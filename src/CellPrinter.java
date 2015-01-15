@@ -2,6 +2,7 @@ import java.util.Stack;
 
 
 
+
 public class CellPrinter {
 	
 	public static void printUnpaddedCell(Cell c) {
@@ -42,6 +43,7 @@ public class CellPrinter {
 	}
 	
 	public static String evaluate(String formula) throws InvalidInputException {
+		formula = formula.substring(1, formula.length() - 1);
 		Stack<String> st = new Stack<String>();
 		String[] parts = formula.split(" ");
 
@@ -92,37 +94,5 @@ public class CellPrinter {
 		}
 		throw new InvalidOperatorException(operator);
 	}
-	
-	
-	@SuppressWarnings("serial")
-	public static class InvalidInputException extends Exception {
-		// New Exception To handle Invalid Inputs and gives the user
-		// a helpful error message
-		public InvalidInputException(String message) {
-			super(message);
-		}
-	}
-	
-	@SuppressWarnings("serial")
-	public static class InvalidOperatorException extends InvalidInputException {
-		// New Exception to handle InvalidOperators and gives the user
-		// a helpful error message
-		public InvalidOperatorException(String operator) {
-			super(operator + " is not a valid operator."
-					+ "\nValid operators: + or - or * or /");
-		}
-	}
-	@SuppressWarnings("serial")
-	public static class InvalidNumberException extends InvalidInputException {
-		// New Exception to handle InvalidNumbers and gives the user
-		// a helpful error message
-		public InvalidNumberException(String number) {
-			super(
-					number
-							+ " is not a valid number. "
-							+ "\nCorrect format: number (space) operator (space) number ..."
-							+ "\nValid format of numbers: 1 or 1.0");
-		}
-	}	
 }
 

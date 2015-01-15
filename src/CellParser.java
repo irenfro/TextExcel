@@ -7,6 +7,10 @@ public class CellParser {
 		if (cell != null) {
 			return cell;
 		}
+		cell = FormulaCell.parseCell(input);
+		if(cell != null) {
+			return cell;
+		}
 		cell = DateCell.parseCell(input);
 		if(cell != null) {
 			return cell;
