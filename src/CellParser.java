@@ -3,11 +3,11 @@ public class CellParser {
 
 	@SuppressWarnings("unused")
 	public static Cell parseCell(String input) throws InvalidCellValueException {
-		Cell cell = DoubleCell.parseCell(input);
+		Cell cell = FormulaCell.parseCell(input);
 		if (cell != null) {
 			return cell;
 		}
-		cell = FormulaCell.parseCell(input);
+		cell = DoubleCell.parseCell(input);
 		if(cell != null) {
 			return cell;
 		}

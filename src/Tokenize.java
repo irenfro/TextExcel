@@ -1,23 +1,8 @@
-import java.io.IOException;
-import java.io.StreamTokenizer;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.*;
 
-public class Test {
-	
-	public static void main(String[] args) {
-		List<String> tokens = new ArrayList<String>();
-		try {
-			tokens = tokenize("(11 * -1");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(tokens);
-	}
-	
+
+public class Tokenize {
 	public static List<String> tokenize(String input) throws InvalidInputException {
 		List<String> tokens = new ArrayList<String>();
 		String s = "";
@@ -37,8 +22,6 @@ public class Test {
 					s += part;
 					continue;
 				}
-				System.out.println(part);
-
 				if(s.length() > 0) {
 					tokens.add(s);
 				}

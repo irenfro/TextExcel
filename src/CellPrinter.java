@@ -1,4 +1,6 @@
+import java.util.List;
 import java.util.Stack;
+import java.util.regex.*;
 
 
 
@@ -45,10 +47,11 @@ public class CellPrinter {
 	public static String evaluate(String formula) throws InvalidInputException {
 		formula = formula.substring(1, formula.length() - 1);
 		Stack<String> st = new Stack<String>();
-		String[] parts = formula.split(" ");
-
-		for (int i = 0; i < parts.length; i++) {
-			if (parts[i].equals("")) {
+		List<String> parts = Tokenize.tokenize(formula);
+		
+	
+		for (int i = 0; i < parts.size(); i++) {
+			if (parts.get(i).equals("")) {
 				continue;
 			}
 			
@@ -56,9 +59,9 @@ public class CellPrinter {
 			if (!st.empty() && (st.peek().equals("*") || st.peek().equals("/"))) {
 				String operator = st.pop();
 				String operand = st.pop();
-				st.push(evaluateString(operand, operator, parts[i]));
+				st.push(evaluateString(operand, operator, parts.get(i)));
 			} else {
-				st.push(parts[i]);
+				st.push(parts.get(i));
 			}
 		}
 		
@@ -73,8 +76,19 @@ public class CellPrinter {
 	}
 	
 	public static String evaluateString(String operand1, String operator, String operand2) throws InvalidInputException{
-		double left = Double.parseDouble(operand1);
-		double right = Double.parseDouble(operand2);
+		double left;
+		double right;
+		try {
+			left = Double.parseDouble(operand1);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(operand1);
+		}
+		try {
+			right = Double.parseDouble(operand2);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(operand2);
+		}
+		
 		double answer;
 		if(operator.equals("+")) {
 			answer = left + right;
@@ -94,5 +108,6 @@ public class CellPrinter {
 		}
 		throw new InvalidOperatorException(operator);
 	}
+	
 }
 

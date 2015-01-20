@@ -28,9 +28,13 @@ public class FormulaCell extends Cell {
 	}
 	
 	public static FormulaCell parseCell(String input) {
-		if(input.charAt(0) == '(' && input.charAt(input.length() - 1) == ')') {
-			return new FormulaCell(input);
-		} else {
+		try {
+			if(input.charAt(0) == '(' && input.charAt(input.length() - 1) == ')') {
+				return new FormulaCell(input);
+			} else {
+				return null;
+			}
+		} catch (NullPointerException e) {
 			return null;
 		}
 	}

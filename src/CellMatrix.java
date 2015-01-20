@@ -1,5 +1,4 @@
-
-
+import java.util.ArrayList;
 
 
 public class CellMatrix {
@@ -54,18 +53,27 @@ public class CellMatrix {
 	}
 	
 	public void print() {
+		ArrayList <String> errors = new ArrayList<String>();
 		for (int i = 0; i < data.length; i++) {
 			for (int j = 0; j < data[i].length; j++) {
 				try {
 					CellPrinter.printPaddedCell(data[i][j]);
 				} catch (InvalidInputException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					errors.add("Cell " + num2Letter(i, j) + "\n" + e.getMessage());
 				}
 			}
 			System.out.println();
 			line();
 		}
+		for(String s : errors) {
+			System.out.println();
+			System.out.println(s + "\n");
+		}
+	}
+	
+	public String num2Letter(int row, int column) {
+		char Column = (char) ('A' + column - 1);
+		return "" + Column + row;
 	}
 
 	public void line() {
@@ -79,6 +87,7 @@ public class CellMatrix {
 		int[] coords = findLocation(location);
 		return data[coords[0]][coords[1]];
 	}
+	
 
 	public void clear() throws InvalidCellValueException {
 		for (int i = 1; i < data.length; i++) {
