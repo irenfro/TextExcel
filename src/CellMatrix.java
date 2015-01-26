@@ -57,6 +57,7 @@ public class CellMatrix {
 				try {
 					CellPrinter.printPaddedCell(data[i][j]);
 				} catch (InvalidInputException e) {
+					
 					StringCell sc = new StringCell("#err");
 					try {
 						CellPrinter.printPaddedCell(sc);

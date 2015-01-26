@@ -9,6 +9,10 @@ public class FormulaCell extends Cell {
 	private static int count = 0;
 	private static int maxChainDepth = 1000;
 	private static HashSet hs = new HashSet();
+	private static int matrixCStart = (int)'A';
+	private static int matrixCEnd = (int) 'G';
+	private static int matrixRStart = 1;
+	private static int matrixREnd = 10;
 	String value;
 	
 	public FormulaCell(String newValue) {
@@ -57,7 +61,16 @@ public class FormulaCell extends Cell {
 				continue;
 			}
 			
-			if(parts.get(i).matches("^[A-Za-z][0-9]")) {
+			if(parts.get(i).equals("sum")) {
+				return Double.toString(sum(parts));
+			}
+			
+			if(parts.get(i).equals("avg")) {
+				return Double.toString(avg(parts));
+			}
+			//System.out.println(parts.get(i));
+			if(parts.get(i).matches("^[A-Za-z][0-9]+")) {
+				//System.out.println(parts.get(i));
 				parts.set(i, getReferencedCellValue(parts.get(i)));
 			}
 			
@@ -81,7 +94,10 @@ public class FormulaCell extends Cell {
 		return st.pop();
 	}
 	
-	private static String getReferencedCellValue(String location) throws InvalidInputException {
+	private static String getReferencedCellValue(String location) throws InvalidInputException, InvalidCellException {
+		if(!checkLocation(location)) {
+			throw new InvalidCellException(location);
+		}
 		String type = matrix.getCell(location).getType();
 		if(hs.contains(location)) {
 			hs.clear();
@@ -136,5 +152,69 @@ public class FormulaCell extends Cell {
 		throw new InvalidOperatorException(operator);
 	}
 	
+	public static boolean checkLocation(String location) {
+		char letter = location .charAt(0);
+		int let = (int) letter;
+		int number = Integer.parseInt(location.substring(1));
+		if((let <= matrixCEnd && let >= matrixCStart) && (number <= matrixREnd && number >= matrixRStart)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static double sum(List<String> equation) throws NumberFormatException, InvalidInputException {
+		int[] parts = getCellLocation(equation);
+		
+		double answer = 0;
+		for(int i = parts[0]; i <= parts[1]; i++) {
+			for(int j = parts[2]; j <= parts[3]; j++) {
+				char c = (char) ('A' + (j-1));
+				answer += Double.parseDouble(getReferencedCellValue(""+c+i));
+			}
+		}
+		return answer;
+	}
+	
+	public static double avg(List<String> equation) throws NumberFormatException, InvalidInputException {
+		double sum = sum(equation);
+		int[] parts = getCellLocation(equation);
+		int length = parts[1]-parts[0];
+		int width = parts[3]-parts[1];
+		if(length == 0) {
+			length++;
+		}
+		if(width == 0) {
+			width++;
+		}
+		return sum/(length*width);
+		
+	}
+	
+	public static int[] getCellLocation(List<String> equation) throws InvalidCellException {
+		String startCell = "";
+		String endCell = "";
+		for(int i = 0; i < equation.size(); i++) {
+			if(equation.get(i).matches("^[A-Za-z][0-9]+")) {
+				if(startCell.equals("")) {
+					startCell = equation.get(i);
+				} else if(endCell.equals("")) {
+					endCell = equation.get(i);
+				} else {
+					throw new InvalidCellException ("too many cell references for sum");
+				}
+			}
+		}
+		
+		char startLetter = startCell.charAt(0);
+		char endLetter = endCell.charAt(0);
+		
+		int startCol = (int) (startLetter - 'A' + 1);
+		int endCol = (int) (endLetter - 'A' + 1);
+		
+		int startRow = Integer.parseInt(startCell.substring(1));
+		int endRow = Integer.parseInt(endCell.substring(1));
+		int[] parts = {startRow, endRow, startCol, endCol};
+		return parts;
+	}
 
 }
