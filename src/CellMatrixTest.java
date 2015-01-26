@@ -41,7 +41,7 @@ public class CellMatrixTest {
 	
 	@Test
 	public void SpreadsheetTest()  {
-		CellMatrix s = new CellMatrix();
+		CellMatrix s = CellMatrix.getInstance();
 		try {
 			s.setValue("A5", "1.3");
 			s.setValue("B3", "\"hello\"");

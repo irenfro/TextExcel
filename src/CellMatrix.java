@@ -6,14 +6,12 @@ public class CellMatrix {
 	final static int width = 7;
 	Cell[][] data = new Cell[height + 1][width + 1];
 	final static String line = "------------+";
+	private static CellMatrix instance = null;
 
-	public CellMatrix() {
-		for (int i = 0; i < data.length; i++) {
-			for (int j = 0; j < data[i].length; j++) {
-				data[i][j] = new Cell();
-			}
-		}
+	private CellMatrix() {
+		clear();
 
+		data[0][0] = new Cell(); // Origin cell
 		for (int i = 1; i < data[0].length; i++) {
 			data[0][i] = new StringCell(Character.toString((char) (i - 1 + 'A')));
 		}
@@ -59,6 +57,11 @@ public class CellMatrix {
 				try {
 					CellPrinter.printPaddedCell(data[i][j]);
 				} catch (InvalidInputException e) {
+					StringCell sc = new StringCell("#err");
+					try {
+						CellPrinter.printPaddedCell(sc);
+					} catch (InvalidInputException e1) {
+					}
 					errors.add("Cell " + num2Letter(i, j) + "\n" + e.getMessage());
 				}
 			}
@@ -89,17 +92,17 @@ public class CellMatrix {
 	}
 	
 
-	public void clear() throws InvalidCellValueException {
+	public void clear() {
 		for (int i = 1; i < data.length; i++) {
 			for (int j = 1; j < data[0].length; j++) {
-				data[i][j] = CellParser.parseCell(null);
+				data[i][j] = new Cell();
 			}
 		}
 	}
 
 	public void clear(String location) throws InvalidCellValueException {
 		int[] coords = findLocation(location);
-		data[coords[0]][coords[1]] = CellParser.parseCell(null);
+		data[coords[0]][coords[1]] = new Cell();
 	} 
 
 	public String[] getSaveData() {
@@ -124,6 +127,13 @@ public class CellMatrix {
 		for(int i = 0; i < array.length; i++) {
 			setValue(i, array[i]);
 		}
+	}
+	
+	public static CellMatrix getInstance() {
+		if(instance == null) {
+			instance = new CellMatrix();
+		}
+		return instance;
 	}
 
 	

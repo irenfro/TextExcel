@@ -26,6 +26,10 @@ public class StringCell extends Cell{
 		return "[String]";
 	}
 	
+	public double getNumericValue() throws InvalidInputException {
+		throw new InvalidInputException("numeric value not supported");
+	}
+	
 	public static StringCell parseCell(String input) {
 		if(input == null) {
 			return new StringCell("");

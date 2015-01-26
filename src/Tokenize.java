@@ -34,13 +34,25 @@ public class Tokenize {
 					  part.equals("6") || part.equals("7") || part.equals("8") || part.equals("9")) {
 				s += Character.toString(c);
 				continue;
-			} else if(part.equals(" ") || part.equals("(") || part.equals(")")){
+			} else if(part.equals(" ")){
 				if(s.length() > 0) {
 					tokens.add(s);
 					s = "";
 				}
 				continue;
+			} else if(part.equals("(") || part.equals(")")) {
+				if(s.length() > 0) {
+					tokens.add(s);
+					s = "";
+				}
+				tokens.add(part);
+			} else if(part.equals("<") || part.equals(">")) {
+				continue;
 			} else {
+				if(s.length() > 0) {
+					tokens.add(s);
+					s = "";
+				}
 				tokens.add(Character.toString(c));
 			}
 		}

@@ -4,7 +4,7 @@ public class Cell {
 	public Cell() {
 	}
 	
-	public String getDisplayableSpreadsheetValue() {
+	public String getDisplayableSpreadsheetValue() throws InvalidInputException {
 		return "";
 	}
 	
@@ -15,5 +15,8 @@ public class Cell {
 	public String getType() {
 		return "";
 	}
-	
+
+	public String getValue() {
+		return null;
+	}
 }

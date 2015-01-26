@@ -10,9 +10,10 @@ public class DoubleCell extends Cell{
 		value = newValue;
 	}
 	
-	public double getValue() {
-		return value;
+	public String getValue() {
+		return Double.toString(value);
 	}
+	
 	
 	public String getDisplayableSpreadsheetValue() {
 		return Double.toString(value);
@@ -29,6 +30,7 @@ public class DoubleCell extends Cell{
 	public String getType() {
 		return "[Number]";
 	}
+	
 	
 	public static DoubleCell parseCell(String input) {
 		try {
