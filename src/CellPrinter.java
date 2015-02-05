@@ -18,16 +18,26 @@ public class CellPrinter {
 	public static void printPaddedCell(Cell c) throws InvalidInputException {
 		String v = c.getDisplayableSpreadsheetValue();
 		
-		if (v.length() > 12) {
-			v = v.substring(0, 11) + ">";
+		if(c.getType().equals("[Number]") || c.getType().equals("[Formula]")) {
+			double d = Double.parseDouble(v);
+			String s = String.format("%.6g", d);
+			formatAndPrint(s);
+		} else {
+			formatAndPrint(v);
 		}
-		int numOfSpacesRight = (12 - v.length()) / 2;
-		int numOfSpacesLeft = 12 - v.length() - numOfSpacesRight;
+
+	}
+	
+	public static void formatAndPrint(String s) {
+		if (s.length() > 12) {
+			s = s.substring(0, 11) + ">";
+		}
+		int numOfSpacesRight = (12 - s.length()) / 2;
+		int numOfSpacesLeft = 12 - s.length() - numOfSpacesRight;
 		leadSpace(numOfSpacesLeft);
-		System.out.print(v);
+		System.out.print(s);
 		leadSpace(numOfSpacesRight);
 		System.out.print("|");
-
 	}
 
 	private static void leadSpace(int x) {

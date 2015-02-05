@@ -19,4 +19,8 @@ public class Cell {
 	public String getValue() {
 		return null;
 	}
+	
+	public double getNumericValue() throws InvalidInputException {
+		throw new InvalidInputException("numeric value not supported");
+	}
 }

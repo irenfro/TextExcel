@@ -31,10 +31,13 @@ public class Tokenize {
 				continue;
 			} else if(part.equals("0") || part.equals("1") || part.equals("2") || 
 					  part.equals("3") || part.equals("4") || part.equals("5") || 
-					  part.equals("6") || part.equals("7") || part.equals("8") || part.equals("9")) {
+					  part.equals("6") || part.equals("7") || part.equals("8") || 
+					  part.equals("9")) {
 				s += Character.toString(c);
 				continue;
-			} else if(part.equals(" ")){
+			} else if(part.equals("_"))  {
+				continue;
+			}else if(part.equals(" ")){
 				if(s.length() > 0) {
 					tokens.add(s);
 					s = "";
