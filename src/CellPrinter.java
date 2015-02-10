@@ -18,7 +18,7 @@ public class CellPrinter {
 	public static void printPaddedCell(Cell c) throws InvalidInputException {
 		String v = c.getDisplayableSpreadsheetValue();
 		
-		if(c.getType().equals("[Number]") || c.getType().equals("[Formula]")) {
+		if(v.length() > 12 && (c.getType().equals("[Number]") || c.getType().equals("[Formula]"))) {
 			double d = Double.parseDouble(v);
 			String s = String.format("%.6g", d);
 			formatAndPrint(s);

@@ -178,14 +178,8 @@ public class FormulaCell extends Cell {
 	public static double avg(List<String> equation) throws NumberFormatException, InvalidInputException {
 		double sum = sum(equation);
 		int[] parts = getCellLocation(equation);
-		int length = parts[1]-parts[0];
-		int width = parts[3]-parts[1];
-		if(length == 0) {
-			length++;
-		}
-		if(width == 0) {
-			width++;
-		}
+		int length = parts[1]-parts[0] + 1;
+		int width = parts[3]-parts[2] + 1;
 		return sum/(length*width);
 		
 	}

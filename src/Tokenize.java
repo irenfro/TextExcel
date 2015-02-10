@@ -14,13 +14,17 @@ public class Tokenize {
 				continue;
 			} else if(part.equals("+") || part.equals("-") || 
 					  part.equals("*") || part.equals("/")) {
-				if(i > 0 && (tokens.get(tokens.size()-1).equals("+") ||
+				if(part.equals("-")){
+					if(!tokens.isEmpty() && (tokens.get(tokens.size()-1).equals("+") ||
 						tokens.get(tokens.size()-1).equals("-") ||
 						tokens.get(tokens.size()-1).equals("*") ||
-						tokens.get(tokens.size()-1).equals("/")) 
-				         && part.equals("-")) {
-					s += part;
-					continue;
+						tokens.get(tokens.size()-1).equals("/"))) {
+						s += part;
+						continue;
+					} else if(i == 0){
+						s += part;
+						continue;
+					}
 				}
 				if(s.length() > 0) {
 					tokens.add(s);
